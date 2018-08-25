@@ -1,0 +1,8 @@
+*.o
+*.a
+*.dep
+include-*/
+dep-*/
+obj-*/
+lib-*/
+bin-*/
