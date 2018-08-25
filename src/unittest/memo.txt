@@ -1,0 +1,12 @@
+printf format で型チェック
+
+assert("%d == %d", a, 10);
+assert("%s == %s", s, "hello");
+assert("%.*s == %.*s", len, data, elen, edata);
+
+assert("%c == %c", ch, 'B');
+
+assert("%d < %d", a, 10);
+
+
+

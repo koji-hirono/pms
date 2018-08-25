@@ -1,0 +1,15 @@
+C like
+=======
+
+#          F_ALT          if base == 16 && v != 0 then add 0x
+                          if base == 8 && v != 0 then add 0
+0          F_ZFILL        if flags & F_LJUST then ignore
+                          if prec != 0 then ignore
+-          F_LJUST
+' '(space) F_SPACE_FILL
++          F_SIGN         if base == 10 && v >= 0 then add +
+
+Python like
+============
+https://note.nkmk.me/python-format-zero-hex/
+

@@ -1,0 +1,6 @@
+* log出力フォーマット対応
+  strftime
+* log出力設定
+* pid, tid
+* stdioに依存しない
+* loggerオブジェクトで複数コンテクスト対応
