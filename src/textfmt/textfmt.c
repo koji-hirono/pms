@@ -8,7 +8,7 @@ void
 textfmt_int(Buf *b, int flags, int width, int prec, int base, intmax_t v)
 {
 	if (v < 0) {
-		buf_push_u8(b, '-');
+		buf_pushc(b, '-');
 		v = -v;
 	}
 
@@ -27,7 +27,7 @@ textfmt_uint(Buf *b, int flags, int width, int prec, int base, uintmax_t v)
 
 	start = b->len;
 	do {
-		buf_push_u8(b, text[v % base]);
+		buf_pushc(b, text[v % base]);
 	} while ((v /= base) != 0);
 
 	buf_reverse(b, start, b->len - 1);

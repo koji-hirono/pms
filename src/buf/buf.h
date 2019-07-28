@@ -11,8 +11,14 @@ struct Buf {
 	char *data;
 };
 
-extern void buf_init(Buf *, size_t, size_t, void *);
-extern int buf_push_u8(Buf *, int);
+extern int buf_init(Buf *, size_t);
+extern void buf_free(Buf *);
+extern int buf_expand(Buf *, size_t);
+extern void buf_clear(Buf *);
 extern void buf_reverse(Buf *, int, int);
+extern int buf_pushc(Buf *, int);
+extern int buf_pushstr(Buf *, const char *);
+extern int buf_pushstrz(Buf *, const char *);
+extern int buf_pushoct(Buf *, const void *, size_t);
 
 #endif

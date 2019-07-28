@@ -1,25 +1,53 @@
-#include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
 
 #include "buf.h"
 
 
-void
-buf_init(Buf *b, size_t len, size_t cap, void *data)
+int
+buf_init(Buf *b, size_t cap)
 {
-	b->len = len;
+	if (cap == 0) {
+		b->data = NULL;
+	} else {
+		if ((b->data = malloc(cap)) == NULL)
+			return -1;
+	}
+	b->len = 0;
 	b->cap = cap;
-	b->data = data;
+
+	return 0;
+}
+
+void
+buf_free(Buf *b)
+{
+	free(b->data);
 }
 
 int
-buf_push_u8(Buf *b, int x)
+buf_expand(Buf *b, size_t need)
 {
-	if (b->len >= b->cap)
-		return -1;
+	size_t cap;
+	void *p;
 
-	b->data[b->len++] = x;
+	cap = b->cap;
+	do {
+		cap <<= 1;
+	} while (cap < need);
+
+	if ((p = realloc(b->data, cap)) == NULL)
+		return -1;
+	b->data = p;
+	b->cap = cap;
 
 	return 0;
+}
+
+void
+buf_clear(Buf *b)
+{
+	b->len = 0;
 }
 
 void
@@ -36,4 +64,40 @@ buf_reverse(Buf *b, int start, int end)
 		s++;
 		e--;
 	}
+}
+
+int
+buf_pushc(Buf *b, int ch)
+{
+	if (b->len + 1 >= b->cap)
+		if (buf_expand(b, b->len + 1) != 0)
+			return -1;
+	b->data[b->len++] = ch;
+
+	return 0;
+}
+
+int
+buf_pushstr(Buf *b, const char *s)
+{
+	return buf_pushoct(b, s, strlen(s));
+}
+
+int
+buf_pushstrz(Buf *b, const char *s)
+{
+	return buf_pushoct(b, s, strlen(s) + 1);
+}
+
+int
+buf_pushoct(Buf *b, const void *oct, size_t len)
+{
+	if (b->len + len >= b->cap)
+		if (buf_expand(b, b->len + len) != 0)
+			return -1;
+
+	memcpy(b->data + b->len, oct, len);
+	b->len += len;
+
+	return 0;
 }
