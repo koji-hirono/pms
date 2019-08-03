@@ -1,0 +1,21 @@
+
+* xmllexer malloc version
+
+vsize: 1574, rssize: 510
+vsize: 2086, rssize: 519
+vsize: 2086, rssize: 520
+vsize: 2086, rssize: 522
+
+* xmllexer malloc & link libxml version
+
+vsize: 5212, rssize: 977
+vsize: 5212, rssize: 978
+vsize: 5212, rssize: 978
+vsize: 5212, rssize: 979
+
+* libxml2 xmlreader version
+
+vsize: 5211, rssize: 960
+vsize: 5211, rssize: 997
+vsize: 5211, rssize: 1001
+

@@ -327,6 +327,8 @@ xml_lexer_init(XmlLexer *lexer, Stream *s)
 int
 xml_lexer_token(XmlLexer *lexer, Buf *token)
 {
+	buf_clear(token);
+
 	switch (lexer->state) {
 	case XML_STATE_OUT:
 		return xml_state_out(lexer, token);

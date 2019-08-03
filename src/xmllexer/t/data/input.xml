@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<members xmlns="urn:1.0">
+  <member>
+    <name>aoki</name>
+  </member>
+  <!-- <comment strings> -->
+  <member operation="merge">
+    <name>nakashima</name>
+    <data><![CDATA[
+    # & , " < > ' any strings
+]]></data>
+  </member>
+  <member>
+    <name>suzuki</name>
+    <data>0&lt;1234&gt;</data>
+    <data>456&amp;1234&quot;789&apos;</data>
+  </member>
+</members>
