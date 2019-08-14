@@ -17,6 +17,7 @@ struct Stream {
 
 extern int stream_open(Stream *, int);
 extern void stream_close(Stream *);
+extern int stream_gets(Stream *, Buf *);
 extern int stream_getc(Stream *);
 extern int stream_ungetc(Stream *, int);
 

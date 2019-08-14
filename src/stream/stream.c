@@ -29,6 +29,33 @@ stream_close(Stream *s)
 }
 
 int
+stream_gets(Stream *s, Buf *buf)
+{
+	int c;
+
+	buf_clear(buf);
+
+	c = stream_getc(s);
+	if (c == -1)
+		return -1;
+
+	for (;;) {
+		if (c == -1)
+			break;
+		if (c == '\n')
+			break;
+		/* XXX */
+		if (c == '\r')
+			c = '\0';
+		buf_pushc(buf, c);
+		c = stream_getc(s);
+	}
+	buf_pushc(buf, '\0');
+
+	return 0;
+}
+
+int
 stream_getc(Stream *s)
 {
 	int c;
