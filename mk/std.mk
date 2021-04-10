@@ -3,9 +3,9 @@ SHELL := /bin/sh
 .SUFFIXES:
 
 ifeq ($(MAKELEVEL),0)
-export host_arch := $(shell uname -m)
+export host_arch := $(shell uname -m | tr '[:upper:]' '[:lower:]')
 export arch := $(host_arch)
-export host_os := $(shell uname -s)
+export host_os := $(shell uname -s | tr '[:upper:]' '[:lower:]')
 export os := $(host_os)
 endif
 
