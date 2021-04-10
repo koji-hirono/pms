@@ -3,6 +3,6 @@ include $(TOP)/mk/std.mk
 
 LIB:=memstat
 INCS:=memstat.h
-SRCS:=memstat.c
+SRCS:=memstat_$(os).c
 
 include $(TOP)/mk/lib.mk
