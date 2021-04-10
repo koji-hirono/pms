@@ -1,0 +1,3 @@
+* fdについてはhash tableを用意。
+  checkフェーズではfdからEventテーブルをhash tableから取得
+
