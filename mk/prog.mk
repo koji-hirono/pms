@@ -52,4 +52,6 @@ $(DEPS): | $(DEPPATH)
 $(BINPATH) $(OBJPATH) $(DEPPATH):
 	mkdir -p $@
 
+ifneq ($(MAKECMDGOALS),clean)
 include $(EDEPS)
+endif

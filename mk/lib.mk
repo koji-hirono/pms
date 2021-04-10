@@ -56,4 +56,6 @@ $(TINCS): | $(INCPATH)
 $(LIBPATH) $(OBJPATH) $(DEPPATH) $(INCPATH):
 	mkdir -p $@
 
+ifneq ($(MAKECMDGOALS),clean)
 include $(EDEPS)
+endif
