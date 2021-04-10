@@ -1,0 +1,27 @@
+chargroupは別途判定用の関数を外で用意した方がよい。
+
+a, bは文字を表し、A, Bは文字集合を表す。
+
+
+Set set(ch a, ch b, ...):
+	文字a, b, ...の集合
+	a, b, ...のうちどれかでもmatchすればtrue
+
+Set range(ch a, ch b):
+	aからbまでの文字集合
+	aもbも含む。
+	aからbのうちどれかでもmatchすればtrue
+
+Set neg(Set A):
+	A以外の文字集合
+	Aにmatchしなければtrue
+
+Set subtract(Set A, Set B):
+	aの文字集合からbの文字集合を取り除いた集合
+	Bにmatchせず、Aにmatchすればtrue
+
+
+
+Set wildcard()
+	任意の1文字にmatchする
+
